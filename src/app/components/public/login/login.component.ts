@@ -17,9 +17,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   login() {
     try {
@@ -65,5 +65,16 @@ export class LoginComponent implements OnInit {
       input: 'email',
       inputPlaceholder: 'email'
     });
+
+    if (email) {
+      this.authenticationService.resetarSenha(email)
+        .then(() => {
+          this.emailEnviado = true;
+          this.message = `Email enviado para ${email} com instruções para recuperação.`;
+        })
+        .catch(error => {
+          this.message = `Erro ao localizar o email. Detalhes: ${error}`;
+        });
+    }
   }
 }
