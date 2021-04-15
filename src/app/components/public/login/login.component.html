@@ -25,14 +25,12 @@
                   <span [hidden]="passwordControl.pristine || !passwordControl.errors?.required" class="text-danger">Senha obrigatória!</span>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-info btn-block" (click)="login()">
-                    <i class="fas fa-sign-in-alt"></i> Entrar
+                  <button type="submit" class="btn btn-info btn-block text-uppercase" (click)="login()">
+                    <i class="pi pi-sign-in"></i> Entrar
                   </button>
-                  <h6 class="text-center">
-                    <strong>ou</strong>
-                  </h6>
+                  <strong>ou</strong>
                   <button type="submit" (click)="linkSend()" class="btn btn-lg btn-success btn-block text-uppercase">
-                    <i class="far fa-envelope"></i> Recuperar
+                    <i class="pi pi-envelope"></i> Recuperar senha
                   </button>
                 </div>
                 <br>

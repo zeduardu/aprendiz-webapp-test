@@ -7,10 +7,10 @@ import firebase from 'firebase/app';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private usuario: Observable<firebase.User | null>;
+  private user: Observable<firebase.User | null>;
 
   constructor(private angularFireAuth: AngularFireAuth) {
-    this.usuario = angularFireAuth.authState;
+    this.user = angularFireAuth.authState;
   }
 
   login(email: string, senha: string): Promise<firebase.auth.UserCredential> {
@@ -23,5 +23,9 @@ export class AuthenticationService {
 
   resetarSenha(email: string): Promise<void> {
     return this.angularFireAuth.sendPasswordResetEmail(email);
+  }
+
+  athenticatedUser(): Observable<firebase.User | null> {
+    return this.user;
   }
 }
