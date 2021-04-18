@@ -6,11 +6,26 @@ import { AuthenticationguardService } from './services/authenticationguard.servi
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'admin/painel', loadChildren: () => import('../app/components/admin/painel/painel.module').then(m => m.PainelModule), canActivate: [AuthenticationguardService] },
+  {
+    path: 'admin/painel',
+    loadChildren: () =>
+      import('./components/admin/panel/panel.module').then(
+        (m) => m.PanelModule
+      ),
+    canActivate: [AuthenticationguardService],
+  },
+  {
+    path: 'admin/categoria',
+    loadChildren: () =>
+      import('./components/admin/categoria/categoria.module').then(
+        (m) => m.CategoriaModule
+      ),
+    canActivate: [AuthenticationguardService],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

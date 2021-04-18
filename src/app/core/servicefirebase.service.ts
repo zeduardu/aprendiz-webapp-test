@@ -45,7 +45,7 @@ export abstract class ServiceFirebase<T extends Model> implements ICrud<T> {
 
   docToClass(snapshotDoc: any): T {
     const obj = {
-      id: snapshotDoc.id,
+      //id: snapshotDoc.id,
       ...(snapshotDoc.data() as T),
     };
 
