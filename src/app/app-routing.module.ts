@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
-    path: 'admin/painel',
+    path: 'admin/panel',
     loadChildren: () =>
       import('./components/admin/panel/panel.module').then(
         (m) => m.PanelModule
