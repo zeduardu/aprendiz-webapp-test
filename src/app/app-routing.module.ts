@@ -22,6 +22,20 @@ const routes: Routes = [
       ),
     canActivate: [AuthenticationguardService],
   },
+  {
+    path: 'admin/editor',
+    loadChildren: () => import('./components/admin/editor/editor.module').then(
+      (m) => m.EditorModule
+    ),
+    canActivate: [AuthenticationguardService],
+  },
+  {
+    path: 'admin/post',
+    loadChildren: () => import('./components/admin/post/post.module').then(
+      (m) => m.PostModule
+    ),
+    canActivate: [AuthenticationguardService],
+  },
 ];
 
 @NgModule({
