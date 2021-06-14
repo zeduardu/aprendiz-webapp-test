@@ -13,12 +13,12 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class PostComponent implements OnInit {
 
-  posts$: Observable<Post[]>;
-  categories$: Observable<Categoria[]>;
-  categoryFilter: string;
-  edit: boolean;
-  displayDialogPost: boolean;
-  form: FormGroup;
+  posts$!: Observable<Post[]>;
+  categories$!: Observable<Categoria[]>;
+  categoryFilter!: string;
+  edit!: boolean;
+  displayDialogPost!: boolean;
+  form!: FormGroup;
 
   constructor(
     private postService: PostService,
@@ -37,7 +37,6 @@ export class PostComponent implements OnInit {
     this.form = this.formBuiler.group({
       id: new FormControl(),
       nome: new FormControl('', Validators.required),
-      email:  
     });
   }
 

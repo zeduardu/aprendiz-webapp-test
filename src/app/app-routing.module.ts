@@ -23,9 +23,9 @@ const routes: Routes = [
     canActivate: [AuthenticationguardService],
   },
   {
-    path: 'admin/editor',
-    loadChildren: () => import('./components/admin/editor/editor.module').then(
-      (m) => m.EditorModule
+    path: 'admin/autor',
+    loadChildren: () => import('./components/admin/autor/autor.module').then(
+      (m) => m.AutorModule
     ),
     canActivate: [AuthenticationguardService],
   },
