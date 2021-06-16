@@ -31,7 +31,7 @@ export class AutorComponent implements OnInit {
       id: new FormControl(),
       nome: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
-      ultimoAcesso: new FormControl(new Date(Date.now()))
+      ultimoAcesso: new FormControl('')
     });
   }
 
@@ -43,16 +43,15 @@ export class AutorComponent implements OnInit {
     }
 
     save(): void {
-      // this.authorService.addOrEdit(this.formGroup.value)
-      //   .then(() => {
-      //     this.displayDialogAuthor = false;
-      //     Swal.fire(`Autor ${ !this.edit ? 'salvo' : 'atualizado' } com sucesso.`, '', 'success');
-      //   })
-      //   .catch((error) => {
-      //     this.displayDialogAuthor = false;
-      //     Swal.fire(`Erro ao ${ !this.edit ? 'salvar' : 'atualizar' } o autor.`, `Detalhes: ${ error }`, 'error');
-      //   });
-      console.log(this.formGroup.value);
+      this.authorService.addOrEdit(this.formGroup.value)
+        .then(() => {
+          this.displayDialogAuthor = false;
+          Swal.fire(`Autor ${ !this.edit ? 'salvo' : 'atualizado' } com sucesso.`, '', 'success');
+        })
+        .catch((error) => {
+          this.displayDialogAuthor = false;
+          Swal.fire(`Erro ao ${ !this.edit ? 'salvar' : 'atualizar' } o autor.`, `Detalhes: ${ error }`, 'error');
+        });
     }
 
     delete(categoria: Autor): void {

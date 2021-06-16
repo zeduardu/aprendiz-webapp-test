@@ -36,8 +36,7 @@ export class PostComponent implements OnInit {
   configForm() {
     this.form = this.formBuiler.group({
       id: new FormControl(),
-      nome: new FormControl('', Validators.required),
-    });
+        });
   }
 
 }
