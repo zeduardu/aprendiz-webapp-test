@@ -5,6 +5,7 @@ import { Categoria } from 'src/app/models/categoria.model';
 import { Post } from 'src/app/models/post.model';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { PostService } from 'src/app/services/post.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-post',
@@ -18,12 +19,12 @@ export class PostComponent implements OnInit {
   categoryFilter!: string;
   edit!: boolean;
   displayDialogPost!: boolean;
-  form!: FormGroup;
+  formGroup!: FormGroup;
 
   constructor(
     private postService: PostService,
     private categoryService: CategoriaService,
-    private formBuiler: FormBuilder,
+    // private formBuiler: FormBuilder,
   ) { }
 
   ngOnInit(): void {
@@ -33,10 +34,58 @@ export class PostComponent implements OnInit {
     this.configForm();
   }
 
-  configForm() {
-    this.form = this.formBuiler.group({
-      id: new FormControl(),
+  configForm(): void {
+    // this.formGroup = this.formBuiler.group({
+    //   id: new FormControl(''),
+    //   autor: new FormControl('', Validators.required),
+    //   dataPublicacao: new FormControl(''),
+    //   ultimaAtualizacao: new FormControl(''),
+    //   titulo!: new FormControl('', Validators.required),
+    //   corpo!: new FormControl('', Validators.required),
+    //   categoria: new FormControl('', Validators.required)
+    // });
+  }
+
+  // Acrônimo B.R.E.A.D
+  add(): void{
+    this.formGroup.reset();
+    this.edit = false;
+    this.displayDialogPost = true;
+  }
+
+  save(): void {
+    this.postService.addOrEdit(this.formGroup.value)
+      .then(() => {
+        this.displayDialogPost = false;
+        Swal.fire(`Departamento ${ !this.edit ? 'salvo' : 'atualizado' } com sucesso.`, '', 'success');
+      })
+      .catch((error) => {
+        this.displayDialogPost = false;
+        Swal.fire(`Erro ao ${ !this.edit ? 'salvar' : 'atualizar' } a categoria.`, `Detalhes: ${ error }`, 'error');
+      });
+  }
+
+  delete(post: Post): void {
+    Swal.fire({
+      title: 'Confirma a exclusão do dapartamento?',
+      text: '',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não'
+    }).then((result) => {
+      if (result.value) {
+        this.postService.delete(post.id).then(() => {
+          Swal.fire('Categoria excluída com sucesso!', '', 'success');
         });
+      }
+    });
+  }
+
+  selectPost(post: Post): void {
+    this.edit = true;
+    this.displayDialogPost = true;
+    this.formGroup.setValue(post);
   }
 
 }

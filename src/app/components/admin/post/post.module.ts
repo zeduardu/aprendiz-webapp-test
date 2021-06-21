@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PostRoutingModule } from './post-routing.module';
 import { PostComponent } from './post.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SharedModule } from 'primeng/api';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     PostRoutingModule,
     NgSelectModule
   ]

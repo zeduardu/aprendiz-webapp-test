@@ -30,7 +30,7 @@ export class AutorComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       id: new FormControl(),
       nome: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       ultimoAcesso: new FormControl('')
     });
   }

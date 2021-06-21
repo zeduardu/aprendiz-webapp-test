@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationguardService } from 'src/app/services/authenticationguard.service';
 import { PanelComponent } from './panel.component';
 
 const routes: Routes = [
