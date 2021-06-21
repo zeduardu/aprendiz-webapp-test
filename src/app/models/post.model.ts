@@ -3,10 +3,10 @@ import { Autor } from './autor.model';
 import { Categoria } from './categoria.model';
 
 export class Post extends Model {
-  autor: Autor = new Autor();
-  dataPublicacao: any;
-  ultimaAtualizacao: any;
-  titulo!: string;
-  corpo!: string;
-  categoria: Categoria = new Categoria();
+  author: Autor = new Autor();
+  publicationDate: any;
+  lastUpdate: any;
+  title!: string;
+  body!: string;
+  category: Categoria = new Categoria();
 }

@@ -24,7 +24,7 @@ export class PostComponent implements OnInit {
   constructor(
     private postService: PostService,
     private categoryService: CategoriaService,
-    // private formBuiler: FormBuilder,
+    private formBuiler: FormBuilder,
   ) { }
 
   ngOnInit(): void {
@@ -35,15 +35,15 @@ export class PostComponent implements OnInit {
   }
 
   configForm(): void {
-    // this.formGroup = this.formBuiler.group({
-    //   id: new FormControl(''),
-    //   autor: new FormControl('', Validators.required),
-    //   dataPublicacao: new FormControl(''),
-    //   ultimaAtualizacao: new FormControl(''),
-    //   titulo!: new FormControl('', Validators.required),
-    //   corpo!: new FormControl('', Validators.required),
-    //   categoria: new FormControl('', Validators.required)
-    // });
+    this.formGroup = this.formBuiler.group({
+      id: new FormControl(''),
+      author: new FormControl('', Validators.required),
+      publicationDate: new FormControl(''),
+      lastUpdate: new FormControl(''),
+      title!: new FormControl('', Validators.required),
+      body!: new FormControl('', Validators.required),
+      category: new FormControl('', Validators.required)
+    });
   }
 
   // Acrônimo B.R.E.A.D

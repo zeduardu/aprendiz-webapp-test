@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PostRoutingModule } from './post-routing.module';
 import { PostComponent } from './post.component';
-import { NgSelectModule } from '@ng-select/ng-select';
 import { SharedModule } from 'primeng/api';
+import { DialogModule } from 'primeng/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PostRoutingModule } from './post-routing.module';
 
 
 @NgModule({
@@ -12,10 +13,11 @@ import { SharedModule } from 'primeng/api';
     PostComponent
   ],
   imports: [
+    PostRoutingModule,
     CommonModule,
     SharedModule,
-    PostRoutingModule,
-    NgSelectModule
+    DialogModule,
+    ReactiveFormsModule
   ]
 })
 export class PostModule { }
