@@ -44,23 +44,20 @@
   </div>
 </div>
 
-<p-dialog header="Dados da categoria" [style]="{width: '80vw'}" [contentStyle]="{'overflow':'visible'}" [(visible)]="displayDialogPost" [responsive]="true" [modal]="true">
-  <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="formGroup.value">
-    <form [formGroup]="formGroup" class="p-fluid p-formgrid p-grid">
-      <div class="p-field p-col-12 p-md-6">
-        <label for="author">Autor:</label>
-        <input type="text" pInputText formControlName="author">
-      </div>
-      <div class="p-field p-col-12 p-md-6">
-        <label for="title">Título*:</label>
-        <input type="text" pInputText formControlName="title">
-      </div>
-      <div class="p-d-flex p-jc-end m-1">
-        <button [disabled]="!formGroup.valid" type="button" class="btn btn-primary" (click)="save()">
-          <i class="pi pi-check-circle"></i> {{ edit ? 'Atualizar' : 'Salvar' }}
-        </button>
-      </div>
-      <p>{{ formGroup.getRawValue() }}</p>
-    </form>
-  </div>
+<p-dialog header="Dados da categoria" [style]="{width: '80vw'}" [(visible)]="displayDialogPost" [responsive]="true" [modal]="true">
+  <form [formGroup]="formGroup" *ngIf="formGroup.value">
+    <div class="mb-3">
+      <label for="title" class="form-label">Título</label>
+      <input type="text" class="form-control" id="titleInput" formControlName="title">
+    </div>
+    <div class="mb-3">
+      <label for="body" class="form-label">Conteúdo</label>
+      <p-editor formControlName="body" [style]="{'height':'320px'}"></p-editor>
+    </div>
+    <div class="p-d-flex p-jc-end m-1">
+      <button [disabled]="!formGroup.valid" type="button" class="btn btn-primary" (click)="save()">
+        <i class="pi pi-check-circle"></i> {{ edit ? 'Atualizar' : 'Salvar' }}
+      </button>
+    </div>
+  </form>
 </p-dialog>

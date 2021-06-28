@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PostComponent } from './post.component';
 import { SharedModule } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
+import { EditorModule } from 'primeng/editor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PostRoutingModule } from './post-routing.module';
 
@@ -17,7 +18,8 @@ import { PostRoutingModule } from './post-routing.module';
     CommonModule,
     SharedModule,
     DialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EditorModule
   ]
 })
 export class PostModule { }
